@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useReducer } from 'react';
 import './App.css';
 
 const getRandomNumber = async ():Promise<number> => {
   const res = await fetch('https://www.random.org/integers/?num=1&min=1&max=500&col=1&base=10&format=plain&rnd=new');
   const number = await res.text();
-  throw new Error('Se despi');
+  // throw new Error('Se despi');
   return +number;
 }
 
@@ -13,12 +13,13 @@ export const App = () => {
   const [ number, setNumber ] = useState<number>();
   const [ isLoading, setIsLoading ] = useState<boolean>( true );
   const [ error, setError ] = useState<string>();
+  const [ key, forceRefetch ] = useReducer( ( x ) => x + 1 , 0 );
 
   useEffect(() => {
     getRandomNumber()
       .then(setNumber )
       .catch( error => setError( error.message ))
-  }, []);
+  }, [ key ]);
 
   useEffect(() => {
     if( number ) setIsLoading( false );
