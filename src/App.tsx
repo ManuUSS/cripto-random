@@ -19,7 +19,7 @@ export const App = () => {
 
   return (
     <div className='App App-header'>
-      <h2>Numero aleatorio: </h2>
+      <h2>Numero aleatorio: { number }</h2>
     </div>
   )
 }
