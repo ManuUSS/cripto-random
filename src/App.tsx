@@ -10,15 +10,18 @@ const getRandomNumber = async ():Promise<number> => {
 export const App = () => {
   
   const [ number, setNumber ] = useState<number>();
+  const [ isLoading, setIsLoading ] = useState<boolean>( true );
 
   useEffect(() => {
-    getRandomNumber().then( num => setNumber( num ) );
+    getRandomNumber()
+      .then( num => setNumber( num ) );
   }, []);
   
 
 
   return (
     <div className='App App-header'>
+      { isLoading && (<h2>Cargando...</h2>) }
       <h2>Numero aleatorio: { number }</h2>
     </div>
   )
