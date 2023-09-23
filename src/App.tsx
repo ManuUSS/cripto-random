@@ -12,6 +12,7 @@ export const App = () => {
   const [ number, setNumber ] = useState<number>();
 
   useEffect(() => {
+    getRandomNumber().then( num => setNumber( num ) );
   }, []);
   
 
