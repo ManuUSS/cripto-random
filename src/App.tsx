@@ -35,6 +35,9 @@ export const App = () => {
         ? ( <h2>Cargando...</h2> ) 
         : ( <h2>Numero aleatorio: { number }</h2> )
       }
+      {
+        !isLoading && error && ( <h3>{ error }</h3>)
+      }
     </div>
   )
 }
