@@ -16,6 +16,7 @@ export const App = () => {
   const [ key, forceRefetch ] = useReducer( ( x ) => x + 1 , 0 );
 
   useEffect(() => {
+    setIsLoading( true );
     getRandomNumber()
       .then(setNumber )
       .catch( error => setError( error.message ))
@@ -32,13 +33,22 @@ export const App = () => {
 
   return (
     <div className='App App-header'>
+      
       { isLoading 
         ? ( <h2>Cargando...</h2> ) 
         : ( <h2>Numero aleatorio: { number }</h2> )
       }
+      
       {
         !isLoading && error && ( <h3>{ error }</h3>)
       }
+
+      <button onClick={ forceRefetch } disabled={ isLoading }>
+        {
+          isLoading ? '...' : 'Nuevo número'
+        }
+      </button>
+
     </div>
   )
 }
