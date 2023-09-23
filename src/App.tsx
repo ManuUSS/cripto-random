@@ -19,15 +19,14 @@ export const App = () => {
 
   useEffect(() => {
     if( number ) setIsLoading( false );
-  }, [ number ])
+  }, [ number ]);
   
-  
-
-
   return (
     <div className='App App-header'>
-      { isLoading && (<h2>Cargando...</h2>) }
-      <h2>Numero aleatorio: { number }</h2>
+      { isLoading 
+        ? ( <h2>Cargando...</h2> ) 
+        : ( <h2>Numero aleatorio: { number }</h2> )
+      }
     </div>
   )
 }
