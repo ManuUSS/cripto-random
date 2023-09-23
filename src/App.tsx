@@ -16,13 +16,19 @@ export const App = () => {
 
   useEffect(() => {
     getRandomNumber()
-      .then(setNumber );
+      .then(setNumber )
+      .catch( error => setError( error.message ))
   }, []);
 
   useEffect(() => {
     if( number ) setIsLoading( false );
   }, [ number ]);
   
+  useEffect(() => {
+    if( error ) setIsLoading( false );
+  }, [ error ])
+  
+
   return (
     <div className='App App-header'>
       { isLoading 
