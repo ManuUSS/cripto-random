@@ -14,8 +14,13 @@ export const App = () => {
 
   useEffect(() => {
     getRandomNumber()
-      .then( num => setNumber( num ) );
+      .then(setNumber );
   }, []);
+
+  useEffect(() => {
+    if( number ) setIsLoading( false );
+  }, [ number ])
+  
   
 
 
